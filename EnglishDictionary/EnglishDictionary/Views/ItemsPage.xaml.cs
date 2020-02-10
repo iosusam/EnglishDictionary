@@ -63,5 +63,12 @@ namespace EnglishDictionary.Views
             App.Database.DeleteItemAsync(word);
             
         }
+
+        //When the text change in the search area
+        void OnTextChanged(object sender, EventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            ItemsListView.ItemsSource = App.Database.GetItemByName(searchBar.Text).Result;
+        }
     }
 }

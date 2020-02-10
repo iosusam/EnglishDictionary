@@ -90,5 +90,10 @@ namespace EnglishDictionary.DataBase
         {
             return Database.UpdateAsync(item);
         }
+
+        public Task<List<Words>> GetItemByName(string name)
+        {
+            return Database.Table<Words>().Where(i => i.English.Contains(name) || i.Spanish.Contains(name)).ToListAsync();
+        }
     }
 }
