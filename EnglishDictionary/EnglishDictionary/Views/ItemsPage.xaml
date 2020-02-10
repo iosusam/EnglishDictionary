@@ -41,13 +41,13 @@
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
+                                FontSize="20" TextColor="#5478ED" />
                             <Label Text="{Binding Spanish}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                            <Button Text="Remove" Clicked="RemoveItem"/>
+                                FontSize="16" TextColor="#1EA3E6" />
+                            <Button Text="Remove" Clicked="RemoveItem" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
