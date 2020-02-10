@@ -37,7 +37,7 @@ namespace EnglishDictionary.DataBase
 
         public Task<List<Words>> GetItemsAsync()
         {
-            return Database.Table<Words>().ToListAsync();
+            return Database.Table<Words>().OrderByDescending(x => x.dateRegister).ToListAsync();
         }
 
         public Task<List<Words>> GetItemsNotDoneAsync()

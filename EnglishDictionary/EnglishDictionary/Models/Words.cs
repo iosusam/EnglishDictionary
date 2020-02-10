@@ -1,5 +1,7 @@
-﻿using SQLite;
-using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using SQLite;
+using System;
 using System.Runtime.CompilerServices;
 
 namespace EnglishDictionary.Models
@@ -13,5 +15,8 @@ namespace EnglishDictionary.Models
         public string Spanish { get; set; }
         public int Ocurrencias { get; set; }
         public int Errores { get; set; }
+        [JsonConverter(typeof(DateTimeConverterBase))]
+        public DateTime? dateRegister { get; set; }
+
     }
 }

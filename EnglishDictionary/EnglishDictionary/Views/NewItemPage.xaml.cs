@@ -31,6 +31,8 @@ namespace EnglishDictionary.Views
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", Item);
+            // Take the time date
+            Item.dateRegister = System.DateTime.Now;
             //Save new item in DB
             await App.Database.SaveItemAsync(Item);
             await Navigation.PopModalAsync();
