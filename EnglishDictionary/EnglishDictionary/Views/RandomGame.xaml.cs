@@ -25,14 +25,27 @@ namespace EnglishDictionary.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
-        async void OnButtonClicked(object sender, EventArgs args)
+        async void OnButtonCheckClicked(object sender, EventArgs args)
         {
+            //The upper or lower case doesnt matter
+            String user_answer = viewModel.Respuesta.ToLower();
+            String correct_anser = viewModel.Item.Spanish.ToLower();
+
             //Check the answer responded by the user
-            if (viewModel.Item.Spanish == viewModel.Respuesta)
+            if (correct_anser.Contains(user_answer) && user_answer != "")
             {
-                await DisplayAlert("GOOD JOB", "", "NEXT");
-                viewModel.Item = Constants.getItemRandomly();
-                viewModel.Respuesta = "";
+                if (correct_anser == user_answer)
+                {
+                    await DisplayAlert("GOOD JOB", "", "NEXT");
+                    viewModel.Item = Constants.getItemRandomly();
+                    viewModel.Respuesta = "";
+                }
+                else
+                {
+                    await DisplayAlert("GOOD JOB", "Same meaning: " + viewModel.Item.Spanish, "NEXT");
+                    viewModel.Item = Constants.getItemRandomly();
+                    viewModel.Respuesta = "";
+                }
             }
             else
             {
@@ -43,6 +56,11 @@ namespace EnglishDictionary.Views
                     viewModel.Respuesta = "";
                 }
             }
+        }
+
+        async void OnButtonGiveUpClicked(object sender, EventArgs args)
+        {
+            await DisplayAlert(viewModel.Item.Spanish, "", "OK");
         }
 
 

@@ -39,7 +39,7 @@ namespace EnglishDictionary.Views
         async void update_item(object sender, EventArgs e)
         {
             await App.Database.UpdateItemBy(viewModel.Item);
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
     }
 }

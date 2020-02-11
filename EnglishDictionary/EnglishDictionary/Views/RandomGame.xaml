@@ -12,9 +12,13 @@
         <Label Text="{Binding Item.English}" d:Text="holaaa" FontSize="Title" />
         <Entry Text="{Binding Respuesta}" FontSize="Title" />
         <Button Text="Check!"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Clicked="OnButtonCheckClicked" />
+        <Button Text="Give Up!"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="Center"
-                Clicked="OnButtonClicked" />
+                Clicked="OnButtonGiveUpClicked" />
     </StackLayout>
 
 </ContentPage>
