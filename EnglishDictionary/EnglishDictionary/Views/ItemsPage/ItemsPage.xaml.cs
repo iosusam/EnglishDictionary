@@ -48,6 +48,7 @@ namespace EnglishDictionary.Views
         {
             base.OnAppearing();
             viewModel.LoadItemsCommand.Execute(null);
+            search_bar.Text = search_bar.Text;
         }
 
         private void RemoveItem(object sender, EventArgs e)

@@ -12,6 +12,9 @@ namespace EnglishDictionary.ViewModels
     public class ItemRandomViewModel : INotifyPropertyChanged
     {
         Words item = null;
+        int block = 0;
+        public List<Words> listItemsRange = new List<Words>();
+        public int numberOfItemsBlock = App.Database.GetCountAsync().Result;
         public Words Item {
             get { return item; }
             set { SetProperty(ref item, value); }
@@ -30,10 +33,31 @@ namespace EnglishDictionary.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-        public ItemRandomViewModel()
+
+        public int itemNumber = 0;
+        string itemNumberString = string.Empty;
+        public string ItemNumberString
+        { 
+            get { return itemNumberString; }
+            set { SetProperty(ref itemNumberString, value); }
+        }
+
+public ItemRandomViewModel(int blockpass = 0)
         {
+            block = blockpass;
             Title = "Game";
-            Item = Constants.getItemRandomly();
+            if (block == 0)
+            {
+                Item = Constants.getItemRandomly();
+            }
+            else
+            {
+                listItemsRange = Constants.getItemsBlock(blockpass);
+                Item = listItemsRange[itemNumber];
+                itemNumber++;
+                ItemNumberString = itemNumber.ToString() + " / " + numberOfItemsBlock.ToString();
+            }
+            
             Respuesta = "";
         }
 
@@ -49,6 +73,8 @@ namespace EnglishDictionary.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
+
+
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

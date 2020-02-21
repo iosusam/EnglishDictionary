@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="EnglishDictionary.Views.RandomGame"
+             x:Class="EnglishDictionary.Views.BlockRandomGame"
              Title="{Binding Title}"
-             x:Name="BrowseRandomGame">
+             x:Name="BrowseBlockRandomGame">
 
     <StackLayout Spacing="20" Padding="15">
+        <Label Text="{Binding ItemNumberString}" FontSize="Title" />
         <Label Text="{Binding Item.English}" FontSize="Title" />
         <Entry Text="{Binding Respuesta}" FontSize="Title" />
         <Button Text="Check!"

@@ -9,6 +9,7 @@ namespace EnglishDictionary
     public static class Constants
     {
         public const string DatabaseFilename = "englishWords.db3";
+        public static int setNumber = 10;
 
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
@@ -58,6 +59,32 @@ namespace EnglishDictionary
 
         }
 
+        public static List<Words> getItemsBlock(int block)
+        {
+            //Return list with items range
+            List<Words> resultList = new List<Words>();
+            //Get all items from DB
+            List<Words> fullList = App.Database.GetItemsAsync().Result;
+            //Get count items
+            int countItems = App.Database.GetCountAsync().Result;
+
+            //Item block range
+            int minItem = ((block-1) * setNumber);
+
+            //Get Items
+            if (minItem + setNumber > countItems)
+            {
+                resultList = fullList.GetRange(minItem, countItems - minItem);
+            }
+            else
+            {
+                resultList = fullList.GetRange(minItem, minItem + setNumber);
+            }
+
+            return resultList;
+        }
+
         public static string resetConfirmation = "¿Are you sure to delete al diccionary?";
+        public static string setFinish = "This set is finish";
     }
 }

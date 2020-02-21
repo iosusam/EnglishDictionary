@@ -8,16 +8,16 @@ namespace EnglishDictionary.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class RandomGame : ContentPage
+    public partial class BlockRandomGame : ContentPage
     {
         ItemRandomViewModel viewModel;
-        
+        int block = 0;
 
-        public RandomGame()
+        public BlockRandomGame(int blockpass)
         {
             InitializeComponent();
-
-            BindingContext = this.viewModel = new ItemRandomViewModel();
+            block = blockpass;
+            BindingContext = this.viewModel = new ItemRandomViewModel(block);
         }
         
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -37,14 +37,12 @@ namespace EnglishDictionary.Views
                 if (correct_anser == user_answer)
                 {
                     await DisplayAlert("GOOD JOB", "", "NEXT");
-                    viewModel.Item = Constants.getItemRandomly();
-                    viewModel.Respuesta = "";
+                    getNextItem();
                 }
                 else
                 {
                     await DisplayAlert("GOOD JOB", "Same meaning: " + viewModel.Item.Spanish, "NEXT");
-                    viewModel.Item = Constants.getItemRandomly();
-                    viewModel.Respuesta = "";
+                    getNextItem();
                 }
             }
             else
@@ -52,8 +50,7 @@ namespace EnglishDictionary.Views
                 bool answer = await DisplayAlert("BAD ANSWER", "", "NEXT", "TRY AGAIN");
                 if (answer)
                 {
-                    viewModel.Item = Constants.getItemRandomly();
-                    viewModel.Respuesta = "";
+                    getNextItem();
                 }
             }
         }
@@ -61,10 +58,36 @@ namespace EnglishDictionary.Views
         async void OnButtonGiveUpClicked(object sender, EventArgs args)
         {
             await DisplayAlert(viewModel.Item.Spanish, "", "OK");
-            viewModel.Item = Constants.getItemRandomly();
-            viewModel.Respuesta = "";
+            getNextItem();            
         }
 
+        private async void getNextItem()
+        {
+            //Check if the block is finished
+            if (viewModel.itemNumber >= viewModel.numberOfItemsBlock)
+            {
+                bool answer = await DisplayAlert(Constants.setFinish, "", "ANOTHER SET", "TRY AGAIN");
+                if(answer)
+                {
+                    await Navigation.PopAsync();
+                    //getNextItem();
+                }
+                else
+                {
+                    viewModel.itemNumber = 0;
+                    viewModel.Item = viewModel.listItemsRange[viewModel.itemNumber];
+                    viewModel.itemNumber++;
+                    viewModel.Respuesta = "";
+                }
+            }
+            else
+            {
+                viewModel.Item = viewModel.listItemsRange[viewModel.itemNumber];
+                viewModel.itemNumber++;
+                viewModel.Respuesta = "";
+            }
+            viewModel.ItemNumberString = viewModel.itemNumber.ToString() + " / " + viewModel.numberOfItemsBlock.ToString();
+        }
 
         protected override void OnAppearing()
         {

@@ -36,6 +36,14 @@ namespace EnglishDictionary.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
+                    case (int)MenuItemType.BlockGame:
+                        if (App.Database.GetCountAsync().Result == 0)
+                        {
+                            MenuPages.Remove(id);
+                            return;
+                        }
+                        MenuPages.Add(id, new NavigationPage(new BlockGame()));
+                        break;
                     case (int)MenuItemType.RandomGame:
                         if (App.Database.GetCountAsync().Result == 0)
                         {

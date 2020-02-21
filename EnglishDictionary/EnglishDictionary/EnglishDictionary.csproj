@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\BlockGame\BlockGame.xaml.cs">
+      <DependentUpon>BlockGame.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BlockGame\BlockRandomGame.xaml.cs">
+      <DependentUpon>BlockRandomGame.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ResetResult.xaml.cs">
       <DependentUpon>ResetResult.xaml</DependentUpon>
     </Compile>

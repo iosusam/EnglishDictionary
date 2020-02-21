@@ -9,6 +9,7 @@ namespace EnglishDictionary.Models
         Browse,
         About,
         RandomGame,
+        BlockGame,
         Reset
     }
     public class HomeMenuItem

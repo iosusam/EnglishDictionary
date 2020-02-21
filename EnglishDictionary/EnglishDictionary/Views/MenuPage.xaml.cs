@@ -20,8 +20,9 @@ namespace EnglishDictionary.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Diccionario" },
+                new HomeMenuItem {Id = MenuItemType.Browse, Title="Diccionary" },
                 new HomeMenuItem {Id = MenuItemType.RandomGame, Title="RandomGame" },
+                new HomeMenuItem {Id = MenuItemType.BlockGame, Title="BlockGame" },
                 new HomeMenuItem {Id = MenuItemType.Reset, Title="Reset" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" }
             };

@@ -76,10 +76,6 @@ namespace EnglishDictionary.DataBase
         {
             return Database.Table<Words>().CountAsync();
         }
-        public Task<Words> GetItemRandomly()
-        {
-            return Database.Table<Words>().FirstOrDefaultAsync();
-        }
 
         public Task<List<Words>> GetItemByOcurrencias(int ocurrencias)
         {

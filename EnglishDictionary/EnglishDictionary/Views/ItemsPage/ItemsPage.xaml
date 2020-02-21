@@ -13,7 +13,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <SearchBar Placeholder="Search words..." TextChanged="OnTextChanged"/>
+        <SearchBar Placeholder="Search words..." TextChanged="OnTextChanged" x:Name="search_bar"/>
         <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
