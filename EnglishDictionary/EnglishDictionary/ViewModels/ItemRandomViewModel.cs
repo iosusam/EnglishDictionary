@@ -14,7 +14,7 @@ namespace EnglishDictionary.ViewModels
         Words item = null;
         int block = 0;
         public List<Words> listItemsRange = new List<Words>();
-        public int numberOfItemsBlock = App.Database.GetCountAsync().Result;
+        public int numberOfWords = App.Database.GetCountAsync().Result;
         public Words Item {
             get { return item; }
             set { SetProperty(ref item, value); }
@@ -55,7 +55,21 @@ public ItemRandomViewModel(int blockpass = 0)
                 listItemsRange = Constants.getItemsBlock(blockpass);
                 Item = listItemsRange[itemNumber];
                 itemNumber++;
-                ItemNumberString = itemNumber.ToString() + " / " + numberOfItemsBlock.ToString();
+                ItemNumberString = itemNumber.ToString() + " / " + listItemsRange.Count.ToString();
+                //Number of words in the set
+                /*int numberOfWordsSet = Constants.setNumber * block;
+                if (numberOfWordsSet>numberOfWords)
+                {
+                    //Exact words in the las set
+                    exactWords = (Constants.setNumber * (block-1)) + numberOfWords;
+                    ItemNumberString = itemNumber.ToString() + " / " + exactWords.ToString();
+                }
+                else
+                {
+                    ItemNumberString = itemNumber.ToString() + " / " + Constants.setNumber;
+                    exactWords = Constants.setNumber;
+                }*/
+
             }
             
             Respuesta = "";

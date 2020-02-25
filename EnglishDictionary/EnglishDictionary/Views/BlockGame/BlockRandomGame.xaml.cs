@@ -64,7 +64,7 @@ namespace EnglishDictionary.Views
         private async void getNextItem()
         {
             //Check if the block is finished
-            if (viewModel.itemNumber >= viewModel.numberOfItemsBlock)
+            if (viewModel.itemNumber >= viewModel.listItemsRange.Count)
             {
                 bool answer = await DisplayAlert(Constants.setFinish, "", "ANOTHER SET", "TRY AGAIN");
                 if(answer)
@@ -86,7 +86,7 @@ namespace EnglishDictionary.Views
                 viewModel.itemNumber++;
                 viewModel.Respuesta = "";
             }
-            viewModel.ItemNumberString = viewModel.itemNumber.ToString() + " / " + viewModel.numberOfItemsBlock.ToString();
+            viewModel.ItemNumberString = viewModel.itemNumber.ToString() + " / " + viewModel.listItemsRange.Count.ToString();
         }
 
         protected override void OnAppearing()
