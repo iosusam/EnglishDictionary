@@ -9,9 +9,9 @@
              x:Name="BrowseBlockRandomGame">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding ItemNumberString}" FontSize="Title" />
+        <Label Text="{Binding ItemNumberString}" FontSize="Title"/>
         <Label Text="{Binding Item.English}" FontSize="Title" />
-        <Entry Text="{Binding Respuesta}" FontSize="Title" />
+        <Entry Text="{Binding Respuesta}" FontSize="Title"  x:Name="RespuestaEntry"/>
         <Button Text="Check!"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"

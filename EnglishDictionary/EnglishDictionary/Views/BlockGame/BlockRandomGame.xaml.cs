@@ -85,6 +85,7 @@ namespace EnglishDictionary.Views
                 viewModel.Item = viewModel.listItemsRange[viewModel.itemNumber];
                 viewModel.itemNumber++;
                 viewModel.Respuesta = "";
+                RespuestaEntry.Focus();
             }
             viewModel.ItemNumberString = viewModel.itemNumber.ToString() + " / " + viewModel.listItemsRange.Count.ToString();
         }

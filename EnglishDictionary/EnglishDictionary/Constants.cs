@@ -78,7 +78,7 @@ namespace EnglishDictionary
             }
             else
             {
-                resultList = fullList.GetRange(minItem, minItem + setNumber);
+                resultList = fullList.GetRange(minItem, setNumber);
             }
 
             return resultList;
