@@ -10,7 +10,7 @@ namespace EnglishDictionary
     {
         public const string DatabaseFilename = "englishWords.db3";
         public static int setNumber = 10;
-
+        //Test
         public const SQLite.SQLiteOpenFlags Flags =
             // open the database in read/write mode
             SQLite.SQLiteOpenFlags.ReadWrite |
